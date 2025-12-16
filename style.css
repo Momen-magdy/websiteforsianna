@@ -1,0 +1,1135 @@
+/* ==============================
+   إعادة تعيين أساسية
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 90px;
+  direction: rtl;
+}
+
+html, body {
+  height: 100%;
+  font-family: "IBM Plex Sans Arabic", sans-serif !important;
+  background: #000000;
+  color: #222;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 75px;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Navbar - حجم متوسط، أنيق، بدون فراغات خارجية
+============================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* ممتد كامل عرض الصفحة */
+  backdrop-filter: blur(12px);
+  background: rgba(7, 0, 102, 0.7); /* أزرق شفاف */
+  border-radius: 0; /* بدون حواف مستديرة */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  z-index: 1030;
+  padding: 12px 40px; /* حجم متوسط للNavbar */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 600;
+  font-size: 17px; /* حجم متوسط للرابط */
+  padding: 10px 18px;
+  margin: 0 8px;
+  border-radius: 50px;
+  position: relative;
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: #28a745;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::before {
+  width: 100%;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: #003366;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.navbar .nav-link.active {
+  color: #003366;
+  background: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* زر الخط الساخن داخل Navbar - استايل عصري */
+.navbar .btn-hotline {
+  background: linear-gradient(90deg, #28a745, #3cd26e); /* gradient عصري */
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 16px 45px; /* نفس حجم زر الهيدر */
+  font-size: 1.1rem;  /* نفس حجم زر الهيدر */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-hotline:hover {
+  background: linear-gradient(90deg, #1e7e34, #28a745);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 28px rgba(40, 167, 69, 0.7);
+}
+
+/* Responsive للموبايل */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar .nav-link {
+    font-size: 15px;
+    padding: 8px 12px;
+    margin: 0 4px;
+  }
+
+  .navbar .btn-hotline {
+    padding: 14px 35px;
+    font-size: 1rem;
+  }
+}
+.logo-small {
+  width: 80px;      /* تكبير العرض فقط */
+  height: 50px;     /* الطول ثابت */
+  background: #0400ff;
+  color: #fff;
+  border-radius: 25px; /* نصف الطول لعمل حواف دائرية متناسقة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem; /* تكبير الخط ليتناسب مع الحجم الجديد */
+}
+
+/* ==============================
+   Header with Strong Blue Glow Behind Slider
+============================== */
+header {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  color: #fff;
+  padding: 60px 5%;
+  overflow: hidden;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  background-color: #000; /* خلفية سودا تمامًا */
+  direction: rtl;
+}
+
+/* ===== السلايدر ===== */
+.slider-wrapper {
+  position: relative;
+  width: 50%;
+  height: 80vh;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(25, 0, 255, 0.6);
+  z-index: 1;
+}
+
+/* ===== التوهج الأزرق القوي خلف السلايدر فقط ===== */
+.slider-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1300px;  /* زودت المساحة */
+  height: 1300px;
+  background: radial-gradient(circle, rgba(4, 0, 255, 0.747), rgba(0, 60, 180, 0.6), transparent 85%);
+  filter: blur(160px); /* زودت البلور علشان النور ينتشر */
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: bluePulse 5s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+/* ===== الشرائح ===== */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* ===== محتوى الهيدر ===== */
+.header-content {
+  position: relative;
+  z-index: 2;
+  width: 45%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeScaleIn 1s forwards 0.3s;
+}
+
+header .lead {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards 0.5s;
+}
+
+/* ===== الزر ===== */
+.btn-curved {
+  background: linear-gradient(90deg, #2f00ff, #030172);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 16px 45px;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 20px rgba(0,91,187,0.7);
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-curved:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 28px rgba(3, 0, 187, 0.911);
+  background: linear-gradient(90deg, #1200b3, #0011ff81);
+}
+
+/* ===== الأنيميشن ===== */
+@keyframes fadeScaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bluePulse {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* ===== الموبايل ===== */
+@media (max-width: 992px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    direction: rtl;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    height: 25vh;
+    order: -1;
+    margin-bottom: 25px;
+  }
+
+  .header-content {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  header .lead {
+    font-size: 1.2rem;
+  }
+
+  .btn-curved {
+    padding: 14px 35px;
+    font-size: 1rem;
+  }
+}
+
+/* ==============================
+   About Section Container
+============================== */
+#about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: stretch;
+  direction: rtl;
+}
+
+/* ==============================
+   About Content
+============================== */
+#about {
+  flex: 1 1 60%;
+  background: linear-gradient(135deg, #000000, #000000);
+  border-radius: 20px;
+  padding: 60px 25px;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15); /* تحسين الظل */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: right;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تأثير نور أزرق خلف المحتوى */
+#about::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 17, 255, 0.637) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+  animation: glowPulse 6s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { transform: scale(1) translate(0,0); opacity: 0.3; }
+  100% { transform: scale(1.1) translate(10px,10px); opacity: 0.5; }
+}
+
+/* محتوى About */
+#about > * {
+  position: relative;
+  z-index: 1;
+}
+
+#about h2 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+#about p {
+  max-width: 800px;
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.8;
+  text-align: right;
+}
+#about li {
+  color: #ffffff;
+}
+
+/* ==============================
+   About Sidebar
+============================== */
+#about-sidebar {
+  flex: 1 1 35%;
+  background: linear-gradient(135deg, #000000, #000000);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0, 4, 255, 0.15); /* نفس تأثير الظل */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: right;
+  direction: rtl;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تأثير نور أزرق خلف Sidebar */
+#about-sidebar::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 17, 255, 0.651) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+  animation: glowPulse 6s infinite alternate;
+}
+
+/* محتوى Sidebar */
+#about-sidebar > * {
+  position: relative;
+  z-index: 1;
+}
+
+#about-sidebar h2, 
+#about-sidebar h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+#about-sidebar p, 
+#about-sidebar .small {
+  color: #ffffff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: right;
+}
+
+#about-sidebar .hotline {
+  text-align: right;
+}
+
+#about-sidebar .hotline span.fw-bold {
+  font-size: 1.2rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* =*
+
+
+/* ==============================
+   الخريطة التفاعلية
+============================== */
+.map-container {
+  width: 100%;
+  max-width: 650px;
+  height: 260px;
+  margin: 20px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.values-section {
+  padding: 60px 20px;
+  background: rgb(0, 0, 0);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.value-box {
+  background: #0026ff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-box::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 123, 255, 0.05);
+  transition: all 0.4s ease;
+}
+
+.value-box:hover::before {
+  top: 0;
+}
+
+.value-box h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.value-box p {
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.value-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ==============================
+   قسم الخدمات - تصميم كريتف متطور
+============================== */
+#services {
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #000000, #000000);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* بطاقة الخدمة */
+#services .service-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  padding: 30px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #0a0a0a, #000000); /* فرق طفيف للعمق */
+  box-shadow: 0 15px 30px rgba(0,123,255,0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+/* خلفية متوهجة خفيفة */
+#services .service-item::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(25, 0, 255, 0.219) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.6s ease;
+  border-radius: 50%;
+}
+
+/* عند Hover */
+#services .service-item:hover::before {
+  transform: scale(1.1);
+  opacity: 0.4;
+}
+
+/* الصور - دائرة أكبر مع تأثير Glow */
+#services .service-item img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1100ff;
+  box-shadow: 0 6px 25px rgba(0, 4, 255, 0.35);
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover على الصورة */
+#services .service-item:hover img {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 12px 35px rgba(17, 0, 255, 0.45);
+}
+
+/* النص */
+#services .service-text {
+  flex: 1;
+  padding: 15px 20px;
+  text-align: right;
+  direction: rtl;
+  position: relative;
+  z-index: 1;
+}
+
+/* عنوان القسم */
+#services h1 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+/* عنوان الخدمة */
+#services .service-item h3 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+#services .service-item:hover h3 {
+  color: #0400ff;
+  transform: translateX(5px);
+  text-shadow: 0 0 8px rgba(4, 0, 255, 0.6);
+}
+
+/* وصف الخدمة */
+#services .service-item p {
+  font-size: 1.15rem;
+  color: #ffffff;
+  line-height: 1.7;
+  transition: all 0.4s ease;
+}
+
+#services .service-item:hover p {
+  transform: translateX(3px);
+  color: #ccefff;
+}
+
+/* شريط متدرج أسفل البطاقة */
+#services .service-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #1100ff, #1900ff6c);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+#services .service-item:hover::after {
+  opacity: 1;
+  transform: scaleX(1.05);
+}
+
+/* ==============================
+   Responsive للموبايل
+============================== */
+@media (max-width: 768px) {
+  #services .service-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  #services .service-item img {
+    width: 180px;
+    height: 180px;
+  }
+
+  #services .service-text {
+    text-align: center;
+    padding: 10px 15px;
+  }
+
+  #services .service-item h3 {
+    font-size: 1.5rem;
+  }
+
+  #services .service-item p {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ==============================
+   Testimonials Section - Modern Design
+============================== */
+#testimonials {
+  background: linear-gradient(135deg, #000000, #000000);
+  padding: 80px 20px;
+  border-radius: 0px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  color: #fff;
+}
+
+#testimonials h1 {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+#testimonials h1::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #0011ff;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* ===== كارت العميل ===== */
+.testimonial-card {
+  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 17, 255, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow effect خلف الكارت */
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 17, 255, 0.2) 0%, transparent 70%);
+  transform: rotate(25deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* صورة العميل */
+.testimonial-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1900ff;
+  margin-bottom: 15px;
+  display: block;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(0, 17, 255, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* اسم العميل */
+.testimonial-card h5 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 8px;
+  z-index: 2;
+}
+
+/* التقييم بالنجوم */
+.stars {
+  color: #FFD700 !important;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+  z-index: 2;
+}
+
+/* نص التقييم */
+.testimonial-card p {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0;
+  line-height: 1.8;
+  z-index: 2;
+}
+
+/* Hover Effect */
+.testimonial-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 17, 255, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #testimonials {
+    padding: 60px 15px;
+  }
+
+  #testimonials h1 {
+    font-size: 2rem;
+  }
+
+  .testimonial-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px;
+  }
+
+  .testimonial-img {
+    margin: 0 auto !important;
+  }
+}
+
+
+/* ==============================
+   FAQ Section - تصميم عصري مطوّر
+============================== */
+#faq {
+  background: radial-gradient(circle at top left, #0a0a0a 0%, #000000 70%);
+  border-radius: 22px;
+  padding: 70px 25px;
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.1);
+  max-width: 1000px;
+  margin: 60px auto;
+  overflow: hidden;
+  position: relative;
+}
+#faq h2 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+#faq h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #1900ff, #2600ff91);
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+/* أكورديون */
+.accordion-item {
+  background: transparent;
+  border: none;
+}
+
+.accordion-button {
+  background: linear-gradient(90deg, #ffffff, #0400ff);
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.accordion-button:hover {
+  background: linear-gradient(90deg, #1100ff, #1100ff77);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.accordion-body {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #faq {
+    padding: 50px 15px;
+  }
+
+  #faq h2 {
+    font-size: 1.8rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ==============================
+   قسم التواصل - تصميم عصري مع ألوان نصوص محسّنة
+============================== */
+#contact {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #000000, #000000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  color: #ffffff; /* النصوص العادية بالأسود */
+}
+#contact h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+#contact h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #1100ff;
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* صورة القسم */
+#contact .contact-image {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 25px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px rgba(0, 26, 255, 0.795);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#contact .contact-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(4, 0, 255, 0.3);
+}
+
+/* القوائم */
+#contact .phone-list,
+#contact .landline-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  justify-content: center;
+}
+
+#contact .phone-list li,
+#contact .landline-list li {
+  background: linear-gradient(90deg, #1100ff, #2600ff80);
+  color: #ffffff; /* العنوان الرئيسي بلون هوبس */
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+#contact .phone-list li:hover,
+#contact .landline-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(38, 0, 255, 0.3);
+}
+/* Responsive للموبايل */
+@media (max-width: 768px) {
+  #contact .phone-list,
+  #contact .landline-list {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #contact .contact-image {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .accordion-button {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .accordion-body {
+    font-size: 0.95rem;
+    padding: 12px 15px;
+  }
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+  background: #0210d191;
+  color: #fff;
+  text-align: center;
+  padding: 12px 8px;
+  font-size: 14px;
+}
+/* ==============================
+   الأزرار العامة والاتصال العائم - تصميم عصري بعد التعديل
+============================== */
+.hotline {
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* زر الخط الساخن - حجم أكبر مثل زر الهيدر */
+.btn-hotline {
+  background: linear-gradient(90deg, #28a745, #3cd26e);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 16px 45px; /* نفس حجم زر الهيدر */
+  font-size: 1.1rem;  /* نفس حجم زر الهيدر */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+  transition: all 0.3s ease;
+}
+
+.btn-hotline:hover {
+  background: linear-gradient(90deg, #1e7e34, #28a745);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 28px rgba(40, 167, 69, 0.7);
+}
+
+/* الأزرار العائمة */
+.floating-btn {
+  position: fixed;
+  bottom: 25px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32px;
+  z-index: 9999;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration-line: none;
+}
+
+/* تأثير Hover */
+.floating-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.45);
+}
+
+/* زر الاتصال */
+.call-btn {
+  left: 20px;
+  background: linear-gradient(90deg, #1100ff, #0011ff98);
+}
+
+/* زر الواتساب */
+.whatsapp-btn {
+  right: 20px;
+  background: linear-gradient(90deg, #25d366, #4ce37b);
+}
+
+/* Responsive للموبايل */
+@media (max-width: 768px) {
+  .btn-hotline {
+    padding: 14px 35px; /* متناسب مع الموبايل */
+    font-size: 1rem;
+  }
+
+  .floating-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+}
+/* ==============================
+   تأثيرات عامة
+============================== */
+.fade {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.6s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==============================
+   Media Queries
+============================== */
+@media (max-width: 992px) {
+  section, #services, #contact, #faq, #about {
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header .lead {
+    font-size: 1rem;
+  }
+
+  #contact .contact-image {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header .lead {
+    font-size: 0.9rem;
+  }
+
+  section, #services, #contact, #faq, #about {
+    padding: 15px 8px;
+  }
+}
